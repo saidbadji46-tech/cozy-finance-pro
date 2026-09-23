@@ -64,7 +64,7 @@ function Dashboard() {
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={months}>
                 <XAxis dataKey="name" tickLine={false} axisLine={false} fontSize={11} reversed={data.settings.lang === "ar"} />
-                <Tooltip formatter={(v: number) => fmt(v, base)} />
+                <Tooltip formatter={(v) => fmt(Number(v ?? 0), base)} />
                 <Bar dataKey="income" name={t("income")} fill="var(--color-primary)" radius={[6, 6, 0, 0]} />
                 <Bar dataKey="expenses" name={t("expensesTotal")} fill="var(--color-accent)" radius={[6, 6, 0, 0]} />
               </BarChart>
