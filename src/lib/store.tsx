@@ -29,14 +29,15 @@ export function generateRecurring(d: Data): Data {
   const invoices = [...d.invoices];
   let changed = false, guard = 0;
   for (let k = 0; k < invoices.length && guard < 200; k++) {
-    const inv = invoices[k];
+    const inv = invoices[k]!;
     if (!inv.recurring || inv.recurring === "none" || inv.nextDone) continue;
     const next = shiftDate(inv.issueDate, inv.recurring);
     if (next > today()) continue;
     guard++; changed = true;
     invoices[k] = { ...inv, nextDone: true };
-    invoices.push({ ...inv, id: uid(), number: Math.max(...invoices.map((i) => i.number)) + 1, issueDate: next,
-      dueDate: shiftDate(inv.dueDate, inv.recurring), status: "pending", nextDone: false, lastReminder: undefined });
+    const { lastReminder: _lr, ...rest } = inv; void _lr;
+    invoices.push({ ...rest, id: uid(), number: Math.max(...invoices.map((i) => i.number)) + 1, issueDate: next,
+      dueDate: shiftDate(inv.dueDate, inv.recurring), status: "pending", nextDone: false });
   }
   return changed ? { ...d, invoices } : d;
 }
