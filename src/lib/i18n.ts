@@ -1,0 +1,46 @@
+export type Lang = "ar" | "en";
+
+const ar = {
+  app: "فاتورتي", tagline: "فواتير ومصروفات المستقلين", home: "الرئيسية", invoices: "الفواتير", clients: "العملاء",
+  expenses: "المصروفات", pro: "الحساب", income: "الإيرادات المحصلة", pendingAmt: "مستحقات معلقة",
+  expensesTotal: "المصروفات", profit: "صافي الربح", last6: "الإيرادات والمصروفات — آخر 6 أشهر",
+  recent: "أحدث الفواتير", newInvoice: "فاتورة جديدة", addClient: "إضافة عميل", addExpense: "إضافة مصروف",
+  paid: "مدفوعة", pending: "معلقة", overdue: "متأخرة", all: "الكل", noInvoices: "لا توجد فواتير بعد",
+  noClients: "لا يوجد عملاء بعد", noExpenses: "لا توجد مصروفات بعد", client: "العميل", currency: "العملة",
+  issueDate: "تاريخ الإصدار", dueDate: "تاريخ الاستحقاق", items: "البنود", description: "الوصف", qty: "الكمية",
+  price: "السعر", addItem: "إضافة بند", notes: "ملاحظات", total: "الإجمالي", save: "حفظ", delete: "حذف",
+  markPaid: "تحديد كمدفوعة", markPending: "تحديد كمعلقة", downloadPdf: "تحميل PDF", share: "مشاركة",
+  name: "الاسم", email: "البريد الإلكتروني", phone: "الهاتف", amount: "المبلغ", category: "الفئة", date: "التاريخ",
+  businessName: "اسم نشاطك التجاري", baseCurrency: "العملة الأساسية للوحة التحكم", language: "اللغة",
+  settings: "الإعدادات", plans: "خطط الاشتراك", free: "مجاني", proPlan: "احترافي", perMonth: "/شهرياً",
+  upgrade: "الترقية إلى الاحترافي", currentPlan: "خطتك الحالية", limitReached: "وصلت إلى حد الخطة المجانية — قم بالترقية للمتابعة",
+  invoiceNo: "فاتورة رقم", billTo: "فاتورة إلى", from: "من", approx: "المبالغ محولة تقريبياً إلى",
+  selectClient: "اختر عميلاً", needClient: "أضف عميلاً أولاً لإنشاء فاتورة", comingSoon: "الدفع الإلكتروني قريباً",
+  f1: "5 فواتير شهرياً", f2: "3 عملاء", f3: "تصدير PDF", f4: "فواتير وعملاء بلا حدود", f5: "كل العملات",
+  f6: "تقارير أرباح متقدمة", f7: "إزالة العلامة المائية", viewAll: "عرض الكل", invoicesCount: "فاتورة",
+  software: "برمجيات", equipment: "معدات", travel: "تنقل", office: "مكتب", marketing: "تسويق", other: "أخرى",
+  watermark: "أُنشئت بواسطة فاتورتي", thisMonth: "هذا الشهر",
+};
+const en: typeof ar = {
+  app: "Fatorati", tagline: "Invoices & expenses for freelancers", home: "Home", invoices: "Invoices", clients: "Clients",
+  expenses: "Expenses", pro: "Account", income: "Collected income", pendingAmt: "Pending",
+  expensesTotal: "Expenses", profit: "Net profit", last6: "Income vs expenses — last 6 months",
+  recent: "Recent invoices", newInvoice: "New invoice", addClient: "Add client", addExpense: "Add expense",
+  paid: "Paid", pending: "Pending", overdue: "Overdue", all: "All", noInvoices: "No invoices yet",
+  noClients: "No clients yet", noExpenses: "No expenses yet", client: "Client", currency: "Currency",
+  issueDate: "Issue date", dueDate: "Due date", items: "Items", description: "Description", qty: "Qty",
+  price: "Price", addItem: "Add item", notes: "Notes", total: "Total", save: "Save", delete: "Delete",
+  markPaid: "Mark as paid", markPending: "Mark as pending", downloadPdf: "Download PDF", share: "Share",
+  name: "Name", email: "Email", phone: "Phone", amount: "Amount", category: "Category", date: "Date",
+  businessName: "Your business name", baseCurrency: "Dashboard base currency", language: "Language",
+  settings: "Settings", plans: "Plans", free: "Free", proPlan: "Pro", perMonth: "/month",
+  upgrade: "Upgrade to Pro", currentPlan: "Current plan", limitReached: "Free plan limit reached — upgrade to continue",
+  invoiceNo: "Invoice #", billTo: "Bill to", from: "From", approx: "Amounts approximately converted to",
+  selectClient: "Select a client", needClient: "Add a client first to create an invoice", comingSoon: "Online payment coming soon",
+  f1: "5 invoices / month", f2: "3 clients", f3: "PDF export", f4: "Unlimited invoices & clients", f5: "All currencies",
+  f6: "Advanced profit reports", f7: "No watermark", viewAll: "View all", invoicesCount: "invoices",
+  software: "Software", equipment: "Equipment", travel: "Travel", office: "Office", marketing: "Marketing", other: "Other",
+  watermark: "Made with Fatorati", thisMonth: "This month",
+};
+export const dict = { ar, en };
+export type TKey = keyof typeof ar;
