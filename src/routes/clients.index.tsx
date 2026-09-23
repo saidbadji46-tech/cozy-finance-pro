@@ -4,7 +4,7 @@ import { Trash2, UserPlus } from "lucide-react";
 import { useStore, uid, convert, invoiceTotal, FREE_CLIENTS } from "@/lib/store";
 import { inputCls, btnCls } from "@/components/AppShell";
 
-export const Route = createFileRoute("/clients")({
+export const Route = createFileRoute("/clients/")({
   head: () => ({
     meta: [
       { title: "العملاء — فاتورتي" },

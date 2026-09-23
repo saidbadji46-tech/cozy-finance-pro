@@ -19,6 +19,13 @@ const ar = {
   f1: "5 فواتير شهرياً", f2: "3 عملاء", f3: "تصدير PDF", f4: "فواتير وعملاء بلا حدود", f5: "كل العملات",
   f6: "تقارير أرباح متقدمة", f7: "إزالة العلامة المائية", viewAll: "عرض الكل", invoicesCount: "فاتورة",
   software: "برمجيات", equipment: "معدات", travel: "تنقل", office: "مكتب", marketing: "تسويق", other: "أخرى",
+  reminders: "تذكيرات الدفع", dueSoon: "تستحق قريباً", remind: "تذكير", whatsapp: "واتساب", lastReminded: "آخر تذكير",
+  reminderMsg: "مرحباً {name}، نذكّركم بلطف بالفاتورة رقم {no} بمبلغ {amt} المستحقة بتاريخ {due}. شكراً لكم!",
+  recurring: "تكرار الفاتورة", none: "بدون تكرار", weekly: "أسبوعياً", monthly: "شهرياً", recurringBadge: "متكررة",
+  reports: "تقارير المصروفات", byCategory: "حسب الفئة", monthlyTrend: "الاتجاه الشهري", period: "الفترة",
+  m1: "هذا الشهر", m3: "آخر 3 أشهر", m12: "آخر 12 شهراً", allTime: "كل الوقت", avgMonth: "متوسط شهري", topCategory: "أعلى فئة",
+  address: "العنوان", edit: "تعديل", totalBilled: "إجمالي الفواتير", outstanding: "غير مدفوع", clientDetails: "تفاصيل العميل", search: "بحث…",
+  noReminders: "لا توجد فواتير تحتاج تذكيراً",
   watermark: "أُنشئت بواسطة فاتورتي", thisMonth: "هذا الشهر",
 };
 const en: typeof ar = {
@@ -40,6 +47,13 @@ const en: typeof ar = {
   f1: "5 invoices / month", f2: "3 clients", f3: "PDF export", f4: "Unlimited invoices & clients", f5: "All currencies",
   f6: "Advanced profit reports", f7: "No watermark", viewAll: "View all", invoicesCount: "invoices",
   software: "Software", equipment: "Equipment", travel: "Travel", office: "Office", marketing: "Marketing", other: "Other",
+  reminders: "Payment reminders", dueSoon: "Due soon", remind: "Remind", whatsapp: "WhatsApp", lastReminded: "Last reminded",
+  reminderMsg: "Hi {name}, a friendly reminder about invoice #{no} for {amt}, due {due}. Thank you!",
+  recurring: "Repeat invoice", none: "Don't repeat", weekly: "Weekly", monthly: "Monthly", recurringBadge: "Recurring",
+  reports: "Expense reports", byCategory: "By category", monthlyTrend: "Monthly trend", period: "Period",
+  m1: "This month", m3: "Last 3 months", m12: "Last 12 months", allTime: "All time", avgMonth: "Monthly average", topCategory: "Top category",
+  address: "Address", edit: "Edit", totalBilled: "Total billed", outstanding: "Outstanding", clientDetails: "Client details", search: "Search…",
+  noReminders: "No invoices need a reminder",
   watermark: "Made with Fatorati", thisMonth: "This month",
 };
 export const dict = { ar, en };
