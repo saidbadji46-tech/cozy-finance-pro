@@ -13,7 +13,7 @@ export const Route = createFileRoute("/invoices/new")({
       { property: "og:description", content: "أنشئ فاتورة احترافية وصدّرها PDF." },
     ],
   }),
-  validateSearch: (s: Record<string, unknown>) => ({ client: typeof s.client === "string" ? s.client : undefined }),
+  validateSearch: (s: Record<string, unknown>): { client?: string } => (typeof s["client"] === "string" ? { client: s["client"] } : {}),
   component: NewInvoice,
 });
 

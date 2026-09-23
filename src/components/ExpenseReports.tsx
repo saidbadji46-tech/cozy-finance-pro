@@ -42,7 +42,7 @@ export function ExpenseReports() {
         <div className="flex items-center gap-3">
           <div className="h-28 w-28 shrink-0">
             {mounted && <ResponsiveContainer><PieChart><Pie data={byCat} dataKey="value" innerRadius={30} outerRadius={52} stroke="none">
-              {byCat.map((c) => <Cell key={c.key} fill={COLORS[CATEGORIES.indexOf(c.key)]} />)}</Pie></PieChart></ResponsiveContainer>}
+              {byCat.map((c) => <Cell key={c.key} fill={COLORS[CATEGORIES.indexOf(c.key)] ?? "gray"} />)}</Pie></PieChart></ResponsiveContainer>}
           </div>
           <ul className="min-w-0 flex-1 space-y-1 text-xs">
             {byCat.map((c) => (
