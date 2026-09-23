@@ -4,6 +4,7 @@ import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import { Plus } from "lucide-react";
 import { useStore, convert, invoiceTotal, statusOf } from "@/lib/store";
 import { StatusBadge, btnCls } from "@/components/AppShell";
+import { RemindersPanel } from "@/components/Reminders";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -57,6 +58,7 @@ function Dashboard() {
           </div>
         ))}
       </div>
+      <RemindersPanel />
       <section className="rounded-2xl border border-border bg-card p-4">
         <p className="mb-3 text-sm font-semibold">{t("last6")}</p>
         <div className="h-44">
@@ -95,7 +97,7 @@ export function InvoiceRow({ id }: { id: string }) {
     <Link to="/invoices/$id" params={{ id }} className="flex items-center justify-between gap-3 rounded-2xl border border-border bg-card p-3">
       <div className="min-w-0">
         <p className="truncate font-medium">{c?.name ?? "—"}</p>
-        <p className="text-xs text-muted-foreground">#{String(i.number).padStart(4, "0")} · {i.dueDate}</p>
+        <p className="text-xs text-muted-foreground">#{String(i.number).padStart(4, "0")} · {i.dueDate}{i.recurring && i.recurring !== "none" ? " · ↻" : ""}</p>
       </div>
       <div className="flex shrink-0 flex-col items-end gap-1">
         <p className="text-sm font-bold">{fmt(invoiceTotal(i), i.currency)}</p>

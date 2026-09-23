@@ -2,7 +2,8 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { Download, Share2, Trash2, CheckCircle2, Clock } from "lucide-react";
 import { useStore, invoiceTotal, statusOf } from "@/lib/store";
-import { StatusBadge, btnCls, btnGhost } from "@/components/AppShell";
+import { StatusBadge, btnCls, btnGhost, inputCls } from "@/components/AppShell";
+import { ReminderButtons } from "@/components/Reminders";
 
 export const Route = createFileRoute("/invoices/$id")({
   head: () => ({
@@ -89,6 +90,13 @@ function InvoiceView() {
         </div>
         {inv.notes && <p className="mt-3 text-xs text-muted-foreground">{inv.notes}</p>}
         {data.settings.plan === "free" && <p className="mt-4 text-center text-[10px] text-muted-foreground">{t("watermark")}</p>}
+      </div>
+      <div className="flex items-center gap-2 rounded-2xl border border-border bg-card p-3">
+        <select className={inputCls} value={inv.recurring ?? "none"}
+          onChange={(e) => set((d) => ({ ...d, invoices: d.invoices.map((i) => (i.id === id ? { ...i, recurring: e.target.value as "none", nextDone: false } : i)) }))}>
+          {(["none", "weekly", "monthly"] as const).map((r) => <option key={r} value={r}>{t("recurring")}: {t(r)}</option>)}
+        </select>
+        {inv.status !== "paid" && <ReminderButtons inv={inv} />}
       </div>
       <div className="grid grid-cols-2 gap-2">
         <button disabled={busy} onClick={download} className={btnCls}><Download className="h-4 w-4" />{t("downloadPdf")}</button>
