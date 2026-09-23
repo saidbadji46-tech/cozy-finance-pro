@@ -4,7 +4,7 @@ import { Trash2, UserPlus } from "lucide-react";
 import { useStore, uid, convert, invoiceTotal, FREE_CLIENTS } from "@/lib/store";
 import { inputCls, btnCls } from "@/components/AppShell";
 
-export const Route = createFileRoute("/clients")({
+export const Route = createFileRoute("/clients/")({
   head: () => ({
     meta: [
       { title: "العملاء — فاتورتي" },
@@ -19,6 +19,7 @@ export const Route = createFileRoute("/clients")({
 function Clients() {
   const { data, set, t, fmt } = useStore();
   const [f, setF] = useState({ name: "", email: "", phone: "" });
+  const [q, setQ] = useState("");
   const blocked = data.settings.plan === "free" && data.clients.length >= FREE_CLIENTS;
   const add = () => { set((d) => ({ ...d, clients: [...d.clients, { id: uid(), ...f }] })); setF({ name: "", email: "", phone: "" }); };
   const base = data.settings.currency;
@@ -40,17 +41,20 @@ function Clients() {
         </div>
       )}
       {data.clients.length === 0 && <p className="p-6 text-center text-sm text-muted-foreground">{t("noClients")}</p>}
+      {data.clients.length > 3 && <input className={inputCls} placeholder={t("search")} value={q} onChange={(e) => setQ(e.target.value)} />}
       <div className="space-y-2">
-        {data.clients.map((c) => {
+        {data.clients.filter((c) => c.name.toLowerCase().includes(q.toLowerCase())).map((c) => {
           const invs = data.invoices.filter((i) => i.clientId === c.id);
           const sum = invs.reduce((s, i) => s + convert(invoiceTotal(i), i.currency, base), 0);
           return (
             <div key={c.id} className="flex items-center gap-3 rounded-2xl border border-border bg-card p-3">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-secondary font-bold text-primary">{c.name[0]}</span>
-              <div className="min-w-0 flex-1">
-                <p className="truncate font-medium">{c.name}</p>
-                <p className="truncate text-xs text-muted-foreground">{invs.length} {t("invoicesCount")} · {fmt(sum, base)}</p>
-              </div>
+              <Link to="/clients/$id" params={{ id: c.id }} className="flex min-w-0 flex-1 items-center gap-3">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-secondary font-bold text-primary">{c.name[0]}</span>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate font-medium">{c.name}</p>
+                  <p className="truncate text-xs text-muted-foreground">{invs.length} {t("invoicesCount")} · {fmt(sum, base)}</p>
+                </div>
+              </Link>
               <button aria-label={t("delete")} onClick={() => set((d) => ({ ...d, clients: d.clients.filter((x) => x.id !== c.id) }))} className="shrink-0 p-2 text-muted-foreground"><Trash2 className="h-4 w-4" /></button>
             </div>
           );

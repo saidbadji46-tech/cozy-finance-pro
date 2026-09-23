@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Plus, Trash2 } from "lucide-react";
 import { useStore, uid, today, convert, CURRENCIES, CATEGORIES } from "@/lib/store";
 import { inputCls, btnCls } from "@/components/AppShell";
+import { ExpenseReports } from "@/components/ExpenseReports";
 
 export const Route = createFileRoute("/expenses")({
   head: () => ({
@@ -41,6 +42,7 @@ function Expenses() {
         </div>
         <button disabled={!f.desc || !f.amount} onClick={add} className={`${btnCls} w-full`}><Plus className="h-4 w-4" />{t("addExpense")}</button>
       </div>
+      <ExpenseReports />
       {list.length === 0 && <p className="p-6 text-center text-sm text-muted-foreground">{t("noExpenses")}</p>}
       <div className="space-y-2">
         {list.map((e) => (

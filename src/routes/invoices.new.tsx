@@ -13,6 +13,7 @@ export const Route = createFileRoute("/invoices/new")({
       { property: "og:description", content: "أنشئ فاتورة احترافية وصدّرها PDF." },
     ],
   }),
+  validateSearch: (s: Record<string, unknown>): { client?: string } => (typeof s["client"] === "string" ? { client: s["client"] } : {}),
   component: NewInvoice,
 });
 
@@ -20,7 +21,9 @@ function NewInvoice() {
   const { data, set, t, fmt } = useStore();
   const nav = useNavigate();
   const due = new Date(Date.now() + 14 * 864e5).toISOString().slice(0, 10);
-  const [clientId, setClientId] = useState("");
+  const search = Route.useSearch();
+  const [clientId, setClientId] = useState(search.client ?? "");
+  const [recurring, setRecurring] = useState<"none" | "weekly" | "monthly">("none");
   const [currency, setCurrency] = useState(data.settings.currency);
   const [issueDate, setIssue] = useState(today());
   const [dueDate, setDue] = useState(due);
@@ -51,7 +54,7 @@ function NewInvoice() {
   const save = () => {
     const id = uid();
     const number = Math.max(0, ...data.invoices.map((i) => i.number)) + 1;
-    set((d) => ({ ...d, invoices: [...d.invoices, { id, number, clientId, currency, issueDate, dueDate, notes, status: "pending", items: items.filter((i) => i.desc) }] }));
+    set((d) => ({ ...d, invoices: [...d.invoices, { id, number, clientId, currency, issueDate, dueDate, notes, recurring, status: "pending", items: items.filter((i) => i.desc) }] }));
     nav({ to: "/invoices/$id", params: { id } });
   };
 
@@ -73,6 +76,11 @@ function NewInvoice() {
         <label className="space-y-1 text-sm">{t("issueDate")}<input type="date" className={inputCls} value={issueDate} onChange={(e) => setIssue(e.target.value)} /></label>
         <label className="space-y-1 text-sm">{t("dueDate")}<input type="date" className={inputCls} value={dueDate} onChange={(e) => setDue(e.target.value)} /></label>
       </div>
+      <label className="block space-y-1 text-sm">{t("recurring")}
+        <select className={inputCls} value={recurring} onChange={(e) => setRecurring(e.target.value as "none")}>
+          {(["none", "weekly", "monthly"] as const).map((r) => <option key={r} value={r}>{t(r)}</option>)}
+        </select>
+      </label>
       <div className="space-y-2">
         <p className="text-sm font-semibold">{t("items")}</p>
         {items.map((it, k) => (
