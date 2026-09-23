@@ -3,9 +3,9 @@
 - [x] Clients + invoice status (paid/pending/overdue)
 - [x] Expenses dashboard + profit chart, multi-currency
 - [x] Arabic/English, installable on phone
-- [ ] Expanded expense reports (period filter, category breakdown)
-- [ ] Payment reminders (WhatsApp / email)
-- [ ] Recurring invoices (weekly / monthly)
-- [ ] Client management (detail page, edit, notes)
-- [ ] Android app via Capacitor (APK build needs Android Studio on user's computer)
+- [x] Expanded expense reports (period filter, category breakdown)
+- [x] Payment reminders (WhatsApp / email)
+- [x] Recurring invoices (weekly / monthly)
+- [x] Client management (detail page, edit, notes)
+- [ ] Android APK — Capacitor set up; blocked: needs publishing + Android Studio build on user computer
 - [ ] Real paid subscription (blocked: built-in payments need a paid Lovable plan)
