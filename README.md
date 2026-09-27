@@ -1,14 +1,25 @@
-# Welcome to your Lovable project
+# Fin Flow
+
+اريد تطبيق ويب مخصص للهاتف (PWA) مفيد ومربح: تطبيق إدارة فواتير ومصروفات ذكي للمستقلين وأصحاب المهن الحرة (Invoice & Expense Tracker).
+المميزات الأساسية:
+- تصميم أنيق وسهل وسريع على شاشات الهاتف مع دعم كامل للغة العربية والإنجليزية
+- إنشاء فواتير احترافية وتصديرها بصيغة PDF ومشاركتها مباشرة
+- إدارة العملاء وتتبع حالة الفواتير (مدفوعة، معلقة، متأخرة)
+- تتبع المصروفات والإيرادات مع لوحة تحكم ورسوم بيانية للأرباح
+- دعم العملات المتعددة
+- خطط اشتراك ونموذج تسعير (Freemium) للترقية للاشتراك المدفوع
 
 This project was built with [Lovable](https://lovable.dev).
 
+**Live app**: https://cozy-finance-pro.lovable.app
+
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/60912238-f570-45ec-9392-9eb0a1bcedbc).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +31,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
