@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: "فاتورتي",
   webDir: "capacitor-www",
   server: {
-    url: "https://project--60912238-f570-45ec-9392-9eb0a1bcedbc.lovable.app",
+    url: "https://cozy-finance-pro.lovable.app",
     cleartext: false,
   },
   android: { backgroundColor: "#f7f4ec" },
